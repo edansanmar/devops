@@ -1,4 +1,3 @@
-def pipelineGeneral() {
     pipeline {
         agent any
 
@@ -52,4 +51,4 @@ def pipelineGeneral() {
             }
         }
     }
-}
+
