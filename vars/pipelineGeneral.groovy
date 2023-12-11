@@ -9,7 +9,7 @@ pipeline {
         stages {
             stage('Checkout') {
                 steps {
-                    git url: 'https://github.com/edansanmar/termometro.git'
+                    git url: scmUrl
                 }
             }
 
