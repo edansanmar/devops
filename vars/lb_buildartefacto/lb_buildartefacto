@@ -1,6 +1,6 @@
 // lb_buildartefacto
 
-def lb_buildartefacto() {
+def lb_buildartefacto1() {
     echo "Primera parte de la ejecución del Pipeline"
     //Clonación del repositorio 
     stage('Checkout'){
