@@ -1,17 +1,11 @@
 // lb_buildartefacto
 
-def artefacto(scmUrl) {
-    echo "Primera parte de la ejecución del Pipeline"
-    // Clonación del repositorio 
-    stage('Checkout') {
+// File: buildStage.groovy
+def call() {
+    stage('Build') {
         steps {
-            git url: scmUrl
-        }
-    }
-    // Etapa de construcción de la aplicación
-    stage('Build Application') {
-        steps {
-            sh 'mvn clean package'
+            echo 'Building the application...'
+            // Agrega aquí los pasos específicos para la etapa de build
         }
     }
 }
