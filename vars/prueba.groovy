@@ -1,6 +1,7 @@
 // lb_buildartefacto
 
-def artefacto() {
+def artefacto(Map params) {
+    def scmUrl = params.scmUrl
     echo "Primera parte de la ejecución del Pipeline"
     //Clonación del repositorio 
     stage('Checkout'){
