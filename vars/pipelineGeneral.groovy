@@ -4,15 +4,17 @@ def call(Map params) {
 
     echo "Deploying backend with SCM URL: ${scmUrl}"
     
-    // Bloque node para que funcione el script cambio
-    node {
-        // Importa scripts externos
-        script {
-            // Se carga o importa el script externo
-            load './vars/prueba'
-
-            // Se llama o llaman las funciones
-            prueba.artefacto()
+    //Pipeline, para probar el funcionamiento de la libreria compartida
+    Pipeline {
+        any agent
+         stages {
+            stage('Step 1') {
+                steps {
+                    script {
+                    // Llama a la función de la biblioteca compartida
+                    prueba.artefacto()
+                }
+            }
         }
     }
 }
