@@ -1,12 +1,12 @@
 // lb_buildartefacto
 
-def artefacto() {
+def artefacto(scmUrl) {
     
     echo "Primera parte de la ejecución del Pipeline"
     //Clonación del repositorio 
     stage('Checkout'){
         steps{
-            git url: 'https://github.com/edansanmar/termometro.git'
+            git url: scmUrl
         }
     }
     //etapa de construción de la aplicación
