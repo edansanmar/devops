@@ -12,7 +12,7 @@ def call(Map params) {
                 steps {
                     script {
                         // Llama a la función de la biblioteca compartida
-                        prueba.artefacto(scmUrl)
+                        prueba.artefacto()
                     }
                 }
             }
