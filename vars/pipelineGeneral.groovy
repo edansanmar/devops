@@ -4,15 +4,16 @@ def call(Map params) {
 
     echo "Deploying backend with SCM URL: ${scmUrl}"
     
-    //Pipeline, para probar el funcionamiento de la libreria compartida
-    Pipeline {
-        any agent
-         stages {
+    // Pipeline, para probar el funcionamiento de la librería compartida
+    pipeline {
+        agent any
+        stages {
             stage('Step 1') {
                 steps {
                     script {
-                    // Llama a la función de la biblioteca compartida
-                    prueba.artefacto()
+                        // Llama a la función de la biblioteca compartida
+                        prueba.artefacto()
+                    }
                 }
             }
         }
