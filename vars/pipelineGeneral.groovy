@@ -12,7 +12,7 @@ def call(Map params) {
             load 'devops/vars/lb_buildartefacto/lb_buildartefacto.groovy'
 
             // Se llama o llaman las funciones
-            lb_buildartefacto.lb_buildartefacto1()
+            prueba.artefacto()
         }
     }
 }
