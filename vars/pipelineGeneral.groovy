@@ -9,7 +9,7 @@ def call(Map params) {
         // Importa scripts externos
         script {
             // Se carga o importa el script externo
-            load 'devops/vars/lb_buildartefacto/lb_buildartefacto.groovy'
+            load 'vars/prueba.groovy'
 
             // Se llama o llaman las funciones
             prueba.artefacto()
