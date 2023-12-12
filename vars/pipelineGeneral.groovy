@@ -7,6 +7,6 @@ def call(Map params) {
     // Importa la etapa desde la carpeta src de la misma librería
     @Library('devops') _
 
-    // Llama a la función de la etapa
-    bar(scmUrl)
+    // Llama a la función de la etapa (especifica la ruta completa si es necesario)
+    devops.bar(scmUrl)
 }
