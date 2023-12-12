@@ -9,6 +9,11 @@ def call(Map params) {
     pipeline {
         agent any
         stages {
+            stage('Checkout') {
+        steps {
+            git url: scmUrl
+        }
+    }
             stage('Step 1') {
                 steps {
                     // Llama a la función de la biblioteca compartida pasando scmUrl como argumento
