@@ -1,11 +1,11 @@
 // lb_buildartefacto
 
-// File: buildStage.groovy
+// File: checkoutStage.groovy
 def call() {
-    stage('Build') {
+    stage('Checkout') {
         steps {
-            echo 'Building the application...'
-            // Agrega aquí los pasos específicos para la etapa de build
+            echo 'Checking out the code...'
+            // Agrega aquí los pasos específicos para la etapa de checkout
         }
     }
 }
