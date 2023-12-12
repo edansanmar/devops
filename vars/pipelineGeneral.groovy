@@ -13,7 +13,7 @@ def call(Map params) {
                 steps {
                     // Llama a la función de la biblioteca compartida pasando scmUrl como argumento
                     script {
-                        prueba.call(scmUrl)
+                        bar()
                     }
                 }
             }
