@@ -1,11 +1,11 @@
 // lb_buildartefacto
 
 // File: checkoutStage.groovy
-def call() {
+def call(scmUrl) {
     stage('Checkout') {
         steps {
             echo 'Checking out the code...'
-            // Agrega aquí los pasos específicos para la etapa de checkout
+             git url: scmUrl
         }
     }
 }
