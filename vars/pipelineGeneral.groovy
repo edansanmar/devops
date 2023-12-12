@@ -10,10 +10,8 @@ def call(Map params) {
         stages {
             stage('Step 1') {
                 steps {
-                    script {
-                        // Llama a la función de la biblioteca compartida
-                        prueba.artefacto(scmUrl)
-                    }
+                    // Llama a la función de la biblioteca compartida
+                    prueba.artefacto(scmUrl)
                 }
             }
         }
