@@ -1,4 +1,5 @@
 // File: pipelineGeneral.groovy
+// File: pipelineGeneral.groovy
 def call(Map params) {
     def scmUrl = params.scmUrl
 
@@ -10,8 +11,10 @@ def call(Map params) {
         stages {
             stage('Step 1') {
                 steps {
-                    // Llama a la función de la biblioteca compartida
-                    prueba.artefacto(scmUrl)
+                    // Llama a la función de la biblioteca compartida pasando scmUrl como argumento
+                    script {
+                        prueba.artefacto(scmUrl)
+                    }
                 }
             }
         }
