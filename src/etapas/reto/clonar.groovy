@@ -1,14 +1,13 @@
 package etapas.reto
 
-class clonar{
-    def clonarMethod(scmUrl){
+    def call(scmUrl){
         node {
-            script {
+            
                  git url: scmUrl
-            }
+            
         }
     }
-}
+
 
 
 
