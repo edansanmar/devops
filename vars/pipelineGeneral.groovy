@@ -1,7 +1,6 @@
 
 // Resto del código
 //@Library('devops') _
-
 def call(Map params) {
     def scmUrl = params.scmUrl
 
@@ -11,7 +10,8 @@ def call(Map params) {
             stage('Chekout') {
                 script {
                     load 'src/etapas/reto/clonar.groovy'
-                    clonar()
+                    def clonarIn= new clonar()
+                    clonarIn()
                 }
             }
         }
