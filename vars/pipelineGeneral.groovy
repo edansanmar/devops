@@ -1,62 +1,25 @@
-//File: pipelineGeneral.groovvy
-//arreglo
-def call (Map params) {
+// File: pipelineGeneral.groovy
+
+// Importar funciones desde la carpeta src
+@Library('your-shared-library') _
+
+// Arreglo
+def call(Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend wiht SCM URL: ${scmUrl}"
-pipeline {
+    echo "Deploying backend with SCM URL: ${scmUrl}"
+
+    pipeline {
         agent any
 
         stages {
-            stage('Checkout') {
-                steps {
-                    git url: scmUrl
-                }
-            }
+            checkoutStage(scmUrl)
+            buildStage()
+            testStage()
 
-            stage('Build Application') {
-                steps {
-                    sh 'mvn clean package'
-                }
-            }
+            // Otras funciones de etapas aquí...
 
-            stage('Test') {
-                steps {
-                    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
-                }
-            }
-
-            stage('Package') {
-                steps {
-                    sh 'mvn package'
-                }
-                post {
-                    always {
-                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
-                    }
-                    success {
-                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
-                    }
-                }
-            }
-
-            stage('SonarQube analysis') {
-                environment {
-                    scannerHome = tool 'SonarqubeScanner'
-                }
-                steps {
-                    withSonarQubeEnv('ServerSonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=analisisTermometro \
-                            -Dsonar.projectName=analisisTermometro \
-                            -Dsonar.sources=src/main/java \
-                            -Dsonar.java.binaries=target/classes \
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
-                    }
-                }
-            }
+            // Puedes seguir llamando a las funciones de etapas según sea necesario
         }
     }
-  
 }
-
