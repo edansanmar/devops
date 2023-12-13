@@ -16,7 +16,7 @@ def call(Map params) {
                 steps {
                     // Crea una instancia de la clase y llama al método
                     script {
-                        def clonarInstancia = new clonarMethod()
+                        def clonarInstancia =  clonar()
                         clonarInstancia.clonarMethod(scmUrl)
                     }
                 }
