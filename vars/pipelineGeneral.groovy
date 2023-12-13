@@ -10,7 +10,7 @@ def call(Map params) {
         stages{
             stage('Chekout') {
                 script {
-                    clonar.chekout(scmUrl)
+                    clonar()
                 }
             }
         }
