@@ -1,8 +1,5 @@
 // File: pipelineGeneral.groovy
 
-// Importar funciones desde la carpeta src
-@Library('devops') _
-
 // Arreglo
 def call(Map params) {
     def scmUrl = params.scmUrl
@@ -23,3 +20,4 @@ def call(Map params) {
         }
     }
 }
+
