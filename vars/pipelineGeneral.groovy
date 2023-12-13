@@ -1,4 +1,7 @@
- // Importa la función desde la carpeta src de la misma librería
+// Importa la clase necesaria
+import etapas.reto.clonar
+
+// Resto del código
 //@Library('devops') _
 
 def call(Map params) {
@@ -11,10 +14,10 @@ def call(Map params) {
         stages {
             stage('Verificar repo') {
                 steps {
-                    // Crear una instancia de la clase y llamar a la función
+                    // Crea una instancia de la clase y llama al método
                     script {
-                        def clonarInstancia = etapa.reto.clonarMethod()
-                        clonarInstancia.call(scmUrl)
+                        def clonarInstancia = new clonar()
+                        clonarInstancia.clonarMethod(scmUrl)
                     }
                 }
             }
