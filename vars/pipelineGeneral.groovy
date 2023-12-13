@@ -1,5 +1,5 @@
  // Importa la función desde la carpeta src de la misma librería
-@Library('devops') _
+//@Library('devops') _
 
 def call(Map params) {
     def scmUrl = params.scmUrl
