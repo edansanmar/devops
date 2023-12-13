@@ -1,13 +1,8 @@
-package etapas.reto
+//package etapas.reto
 
-    def call(scmUrl){
-        node {
-            script{
-                 git url: 'https://github.com/edansanmar/termometro.git'
-            }
-        }
+    def call(scmUrl) {
+  node {
+      git url: repoUrl, branch: branch
     }
-
-
 
 
