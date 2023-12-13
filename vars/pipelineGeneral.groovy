@@ -1,4 +1,5 @@
 //File: pipelineGeneral.groovvy
+//arreglo
 def call (Map params) {
     def scmUrl = params.scmUrl
 
@@ -58,43 +59,4 @@ pipeline {
     }
   
 }
-[11:42 a. m., 12/12/2023] Edwin Andrés Sánchez: // File: pipelineGeneral.groovy
-def call(Map params) {
-    def scmUrl = params.scmUrl
-
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-    
-    // Bloque node para que funcione el script cambio
-    node {
-        // Importa scripts externos
-        script {
-            // Se carga o importa el script externo
-            load 'vars/prueba'
-
-            // Se llama o llaman las funciones
-            prueba.artefacto()
-        }
-    }
-}
-[1:49 p. m., 12/12/2023] Edwin Andrés Sánchez: // File: pipelineGeneral.groovy
-def call(Map params) {
-    def scmUrl = params.scmUrl
-
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-    
-    // Pipeline, para probar el funcionamiento de la librería compartida
-    pipeline {
-        agent any
-        stages {
-            
-            stage('Step 1') {
-                steps {
-                    // Llama a la función de la biblioteca compartida pasando scmUrl como argumento
-                    script {
-                        prueba.call(scmUrl)
-                    }
-                }
-            }
-        }
-    }
-}
+[
