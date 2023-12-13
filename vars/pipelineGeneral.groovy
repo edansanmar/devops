@@ -15,7 +15,8 @@ def call(Map params) {
         steps {
           script {
             //print "-------------------${env.GIT_BRANCH}-------------------"
-            clonar(scmUrl)
+            def clonarInstancia= clonar()
+            clonarInstancia(scmUrl)
           }
         }
       }
