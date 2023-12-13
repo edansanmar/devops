@@ -3,7 +3,7 @@
     def call(scmUrl) {
   node {
     //cambio
-      git url: repoUrl, branch: branch
+      git url: scmUrl
     }
 
 
