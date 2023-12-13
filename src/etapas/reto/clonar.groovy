@@ -5,7 +5,7 @@ def chekout(scmUrl){
         stage("Verificación"){
             steps{
                 script{
-                    git url: scmUrl
+                    sh 'echo hello wordl'
                 }
             }
         }
