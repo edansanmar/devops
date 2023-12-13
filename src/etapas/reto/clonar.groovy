@@ -1,4 +1,4 @@
-//package etapas.reto
+package etapas.reto
 
     def call(scmUrl) {
   node {

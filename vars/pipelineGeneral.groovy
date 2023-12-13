@@ -1,5 +1,5 @@
 // Importa la clase necesaria
-//import etapas.reto.clonar
+import etapas.reto.clonar
 
 // Resto del código
 //@Library('devops') _
