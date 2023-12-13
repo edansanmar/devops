@@ -1,6 +1,6 @@
 
 // Resto del código
-//@Library('devops') _
+library('devops').import etapas.reto.clonar()
 def call(Map params) {
     def scmUrl = params.scmUrl
 
