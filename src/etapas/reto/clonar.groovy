@@ -1,6 +1,7 @@
 
 def chekout(scmUrl){
-    stages {
+   pipeline{
+     stages {
         stage("Verificación"){
             steps{
                 script{
@@ -9,5 +10,6 @@ def chekout(scmUrl){
             }
         }
     }
+   }
 }
 
