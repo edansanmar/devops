@@ -11,17 +11,13 @@ def call(Map params) {
     
     pipeline {
         agent any
-        stages {
-            stage('Verificar repo') {
-                steps {
-                    // Crea una instancia de la clase y llama al método
-                    script {
-                        //Nueva prueba de funcionamiento 
-                        def clonarInstancia =  clonarMethod()
-                        clonarInstancia.clonarMethod(scmUrl)
-                    }
-                }
-            }
+        stage('Clone and Checkout') {
+        steps {
+          script {
+            //print "-------------------${env.GIT_BRANCH}-------------------"
+            clonarycapturar(scmUrl)
+          }
         }
+      }
     }
 }
