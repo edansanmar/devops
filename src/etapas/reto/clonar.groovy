@@ -1,10 +1,13 @@
 
 def chekout(scmUrl){
-    node {
-         //cambio
-         script {
-      git url: scmUrl
-      }
+    stages {
+        stage("Verificación"){
+            steps{
+                script{
+                    git url: scmUrl
+                }
+            }
+        }
     }
 }
 
