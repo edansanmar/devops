@@ -1,6 +1,6 @@
 
 // Resto del código
-@Library('devops') _
+//@Library('devops') _
 
 def call(Map params) {
     def scmUrl = params.scmUrl
