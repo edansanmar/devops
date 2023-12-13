@@ -1,7 +1,7 @@
 // File: pipelineGeneral.groovy
 
 // Importar funciones desde la carpeta src
-@Library('your-shared-library') _
+@Library('devops') _
 
 // Arreglo
 def call(Map params) {
