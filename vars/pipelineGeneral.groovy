@@ -10,6 +10,7 @@ def call(Map params) {
         stages{
             stage('Chekout') {
                 script {
+                    load 'src/etapas/reto/clonar.groovy'
                     clonar()
                 }
             }
