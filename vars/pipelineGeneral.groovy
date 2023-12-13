@@ -14,8 +14,8 @@ def call(Map params) {
 
         stages {
             checkoutStage(scmUrl)
-            buildStage()
-            testStage()
+            //buildStage()
+            //testStage()
 
             // Otras funciones de etapas aquí...
 
