@@ -13,7 +13,7 @@ def call(Map params) {
                 steps {
                     // Crear una instancia de la clase y llamar a la función
                     script {
-                        def clonarInstancia = new src.etapa.reto.clonar()
+                        def clonarInstancia = etapa.reto.clonarMethod()
                         clonarInstancia.call(scmUrl)
                     }
                 }
