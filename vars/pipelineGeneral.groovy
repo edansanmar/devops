@@ -7,12 +7,12 @@ pipeline {
         agent any
 
         stages {
-            stage('Checkout') {
-                steps {
+            //stage('Checkout') {
+                //steps {
                     //git url: scmUrl
-                    clonar()
-                }
-            }
+                    clonar(scmUrl)
+              //  }
+            //}
 
            /* stage('Build Application') {
                 steps {
