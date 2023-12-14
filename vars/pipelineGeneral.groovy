@@ -8,7 +8,7 @@ pipeline {
             stage('Checkout') {
                 steps {
                     script{
-                        def clonarr= new etapas.reto.clonar()
+                        def clonarr= new CheckoutStage()
                         clonarr.call(scmUrl)
                         
                     }
