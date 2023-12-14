@@ -1,5 +1,5 @@
 // File: pipelineGeneral.groovy
-
+library.etapas.reto.clonar.groovy
 // Arreglo
 def call(Map params) {
     def scmUrl = params.scmUrl
