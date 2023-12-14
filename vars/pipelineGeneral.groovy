@@ -9,7 +9,7 @@ pipeline {
                 steps {
                     script{
                         def clonarr= new etapas.reto.clonar()
-                        clonarr.call()
+                        clonarr.call(scmUrl)
                         
                     }
                   
