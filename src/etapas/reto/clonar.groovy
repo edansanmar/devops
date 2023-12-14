@@ -1,5 +1,5 @@
 // File: src/CheckoutStage.groovy
-package src.etapas.reto
+package etapas.reto
 
 def call() {
     stage('Checkout') {
