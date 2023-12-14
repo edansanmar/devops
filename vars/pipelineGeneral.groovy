@@ -1,5 +1,5 @@
 //File: pipelineGeneral.groovvy
-import src.etapas.reto.clonar.groovy
+import src.etapas.reto
 def call (Map params) {
     def scmUrl = params.scmUrl
 
