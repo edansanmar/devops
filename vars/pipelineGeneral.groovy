@@ -11,7 +11,8 @@ pipeline {
             stage('Checkout') {
                 steps {
                     script{
-                        clonar.call()
+                        etapas.reto.clonar.call()
+                        
                     }
                    // git url: scmUrl
                     
