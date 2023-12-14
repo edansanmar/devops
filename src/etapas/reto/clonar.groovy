@@ -1,6 +1,7 @@
 // File: src/CheckoutStage.groovy
 package etapas.reto
 
-def call() {
-    echo "Hola"
+def call(scmUrl) {
+        git url: scmUrl
+        echo "Finalizado"
 }
