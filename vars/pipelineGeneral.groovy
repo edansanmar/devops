@@ -16,14 +16,14 @@ pipeline {
                     
                 }
             }
-           /* stage('Build Applicarion') {
+            stage('Build Applicarion') {
                 steps {
                     script{
                         def cleann= new etapas.reto.clean()
                         cleann.call()
                     }
                 }
-            }*/
+            }
 
                   }
     }
