@@ -1,27 +1,60 @@
-// File: pipelineGeneral.groovy
-
-//@Library('etapas.reto') _
-
-// Arreglo
-def call(Map params) {
+//File: pipelineGeneral.groovvy
+def call (Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-
-    pipeline {
+    echo "Deploying backend wiht SCM URL: ${scmUrl}"
+pipeline {
         agent any
 
         stages {
-            stage{
-            clonar.scmCheckout(scmUrl) // Llama a la función de clonación definida en clonar.groovy
-            // buildStage()
-            // testStage()
+            stage('Checkout') {
+                steps {
+                    git url: scmUrl
+                }
+            }
 
-            // Otras funciones de etapas aquí...
+            stage('Build Application') {
+                steps {
+                    sh 'mvn clean package'
+                }
+            }
 
-            // Puedes seguir llamando a las funciones de etapas según sea necesario
+            stage('Test') {
+                steps {
+                    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
+                }
+            }
+
+            stage('Package') {
+                steps {
+                    sh 'mvn package'
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }
+                }
+            }
+
+            stage('SonarQube analysis') {
+                environment {
+                    scannerHome = tool 'SonarqubeScanner'
+                }
+                steps {
+                    withSonarQubeEnv('ServerSonarqube') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=analisisTermometro \
+                            -Dsonar.projectName=analisisTermometro \
+                            -Dsonar.sources=src/main/java \
+                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                    }
+                }
             }
         }
     }
+  
 }
-
