@@ -9,21 +9,21 @@ pipeline {
                 steps {
                     script{
                         def clonarr= new etapas.reto.clonar()
-                        clonarr.call(scmUrl)
+                        clonarr.call()
                         
                     }
                   
                     
                 }
             }
-            stage('Build Applicarion') {
+           /* stage('Build Applicarion') {
                 steps {
                     script{
                         def cleann= new etapas.reto.clean()
                         cleann.call()
                     }
                 }
-            }
+            }*/
 
                   }
     }

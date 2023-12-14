@@ -1,6 +1,6 @@
-def call(scmUrl) {
+def call() {
     //cambio de info
-        git url: scmUrl
+        //git url: scmUrl
         echo "Finalizado"
        
 }
