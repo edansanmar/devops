@@ -12,6 +12,7 @@ def call(Map params) {
         agent any
 
         stages {
+            stage{
             clonar.scmCheckout(scmUrl) // Llama a la función de clonación definida en clonar.groovy
             // buildStage()
             // testStage()
@@ -19,6 +20,7 @@ def call(Map params) {
             // Otras funciones de etapas aquí...
 
             // Puedes seguir llamando a las funciones de etapas según sea necesario
+            }
         }
     }
 }
