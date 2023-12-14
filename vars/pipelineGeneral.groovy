@@ -8,7 +8,7 @@ pipeline {
             stage('Checkout') {
                 steps {
                     script{
-                        def clonarr= new checkoutStage()
+                        def clonarr= new CheckoutStage()
                         clonarr.call(scmUrl)
                         
                     }
