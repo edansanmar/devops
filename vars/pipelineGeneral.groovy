@@ -1,6 +1,6 @@
 // File: pipelineGeneral.groovy
 
-@Library('etapas.reto') _
+//@Library('etapas.reto') _
 
 // Arreglo
 def call(Map params) {
