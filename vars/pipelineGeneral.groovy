@@ -1,5 +1,5 @@
 //File: pipelineGeneral.groovvy
-import src.etapas.reto.clonar
+//import src.etapas.reto.clonar
 def call (Map params) {
     def scmUrl = params.scmUrl
 
@@ -10,6 +10,7 @@ pipeline {
         stages {
             stage('Checkout') {
                 steps {
+                    load 'src/etapas/reto/clonar.groovy'
                    // git url: scmUrl
                     clonar.call(scmUrl)
                 }
