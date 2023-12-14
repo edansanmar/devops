@@ -12,7 +12,7 @@ pipeline {
                 steps {
                 
                    // git url: scmUrl
-                    clonar()
+                    clonar.call()
                 }
             }
 
