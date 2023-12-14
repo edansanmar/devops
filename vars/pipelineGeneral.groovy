@@ -9,7 +9,8 @@ pipeline {
         stages {
             stage('Checkout') {
                 steps {
-                    git url: scmUrl
+                    //git url: scmUrl
+                    clonar()
                 }
             }
 
