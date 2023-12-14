@@ -1,5 +1,7 @@
 // File: pipelineGeneral.groovy
-library.etapas.reto.clonar.groovy
+
+@Library('etapas.reto') _
+
 // Arreglo
 def call(Map params) {
     def scmUrl = params.scmUrl
@@ -10,7 +12,7 @@ def call(Map params) {
         agent any
 
         stages {
-            checkoutStage(scmUrl)
+            clonar.scmCheckout(scmUrl) // Llama a la función de clonación definida en clonar.groovy
             // buildStage()
             // testStage()
 
