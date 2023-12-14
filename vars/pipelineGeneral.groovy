@@ -12,7 +12,7 @@ pipeline {
                 steps {
                     load 'src/etapas/reto/clonar.groovy'
                    // git url: scmUrl
-                    clonar.call(scmUrl)
+                    clonar(scmUrl)
                 }
             }
 
