@@ -33,7 +33,6 @@ def sonarQube() {
     environment {
         scannerHome = tool 'SonarqubeScanner'
     
-    steps {
         withSonarQubeEnv('ServerSonarqube') {
             sh """
                 ${scannerHome}/bin/sonar-scanner \
@@ -44,7 +43,7 @@ def sonarQube() {
                 -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
             """
         }
-    }
+    
     }
     // Tareas adicionales después de la ejecución de SonarQube
     echo "Finalización de prueba en SonarQube"
