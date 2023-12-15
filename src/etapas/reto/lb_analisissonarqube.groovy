@@ -44,6 +44,18 @@ def sonarQube() {
         }
     }
     }
+     script {
+            // Consultar la API de SonarQube para obtener información adicional
+            def sonarApiUrl = "https://tu-sonarqube-server/api/"
+            def projectKey = "analisisTermometro"
+            def response = sh(script: "curl -s ${sonarApiUrl}measures/component?component=${projectKey}", returnStatus: true)
+            if (response == 0) {
+                echo "Análisis de SonarQube completado con éxito."
+            } else {
+                echo "Error en el análisis de SonarQube."
+            }
+        }
+    }
     // Tareas adicionales después de la ejecución de SonarQube
     echo "Finalización de prueba en SonarQube"
 }
