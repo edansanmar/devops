@@ -43,8 +43,7 @@ def sonarQube() {
                             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
         }
     }
-    }
-     script {
+    script {
             // Consultar la API de SonarQube para obtener información adicional
             def sonarApiUrl = "https://tu-sonarqube-server/api/"
             def projectKey = "analisisTermometro"
@@ -56,6 +55,7 @@ def sonarQube() {
             }
         }
     }
+    
     // Tareas adicionales después de la ejecución de SonarQube
     echo "Finalización de prueba en SonarQube"
 }
