@@ -36,7 +36,7 @@ def sonarQube() {
             -Dsonar.projectKey=analisisTermometro \
             -Dsonar.projectName=analisisTermometro \
             -Dsonar.sources=src/main/java \
-            -Dsonar.java.binaries=target/classes \
+            -Dsonar.java.binaries=target/classes=. \
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
 
              // Asignar la ruta del informe Jacoco
