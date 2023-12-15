@@ -40,9 +40,9 @@ def sonarQube() {
             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
 
              // Asignar la ruta del informe Jacoco
-        def jacocoReportPath = "target/site/jacoco/jacoco.xml"
+        //def jacocoReportPath = "target/site/jacoco/jacoco.xml"
     }
 
     echo "Finalización de prueba en sonarQube"
-    return jacocoReportPath
+    //return jacocoReportPath
 }
