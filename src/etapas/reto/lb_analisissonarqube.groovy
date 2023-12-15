@@ -30,10 +30,9 @@ def empaquetadoPackage() {
 }
 
 def sonarQube() {
-        environment {
-            scannerHome = tool 'SonarqubeScanner'
-        }
+        
         steps {
+            def scannerHome = tool 'SonarqubeScanner'
             withSonarQubeEnv('ServerSonarqube') {
                 sh "${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=analisisTermometro \
@@ -45,5 +44,7 @@ def sonarQube() {
         }
 
         echo "Finalización de prueba en sonarQube"
+        
+
 }
 
