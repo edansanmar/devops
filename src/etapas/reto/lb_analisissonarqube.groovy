@@ -32,7 +32,7 @@ def empaquetadoPackage() {
 def sonarQube() {
     environment {
         scannerHome = tool 'SonarqubeScanner'
-    }
+    
     steps {
         withSonarQubeEnv('ServerSonarqube') {
             sh """
@@ -45,7 +45,7 @@ def sonarQube() {
             """
         }
     }
-
+    }
     // Tareas adicionales después de la ejecución de SonarQube
     echo "Finalización de prueba en SonarQube"
 }
