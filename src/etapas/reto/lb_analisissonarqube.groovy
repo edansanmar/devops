@@ -43,9 +43,8 @@ def sonarQube() {
                             -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
                     }
                 }
-            }
-        }
-
+            
     // Tareas adicionales después de la ejecución de SonarQube
     echo "Finalización de prueba en SonarQube"
+    
 }
