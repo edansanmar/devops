@@ -8,22 +8,46 @@ pipeline {
             stage('Checkout') {
                 steps {
                     script{
-                        def clonarr= new etapas.reto.clonar()
-                        clonarr.call(scmUrl)
+                        def clonarr= new etapas.reto.lb_analisissonarqube()
+                        clonarr.clonarCheckout(scmUrl)
                         
                     }
                   
                     
                 }
             }
-            /*stage('Build Applicarion') {
+            stage('Build Applicarion') {
                 steps {
                     script{
-                        def cleann= new etapas.reto.clean()
-                        cleann.call()
+                        def cleann= new etapas.reto.lb_analisissonarqube()
+                        cleann.construirBuild()
                     }
                 }
-            }*/
+            }
+            stage('Test') {
+                steps {
+                    script{
+                        def pruebaa= new etapas.reto.lb_analisissonarqube()
+                        pruebaa.pruebaTest()
+                    }
+                }
+            }
+            stage('Package') {
+                steps {
+                    script{
+                        def empaquetadoo= new etapas.reto.lb_analisissonarqube()
+                        empaquetadoo.empaquetadoPackage()
+                    }
+                }
+            }
+            stage('SonarQube analysis') {
+                steps {
+                    script{
+                        def analisiss= new etapas.reto.lb_analisissonarqube()
+                        analisiss.sonarQube()
+                    }
+                }
+            }
 
                   }
     }
