@@ -30,23 +30,24 @@ def empaquetadoPackage() {
 }
 
 def sonarQube() {
-    script{
-        environment {
-            scannerHome = tool 'SonarqubeScanner'
-        }
-        steps {
+    // Utilizar 'withEnv' para establecer la variable de entorno
+    withEnv(["SCANNER_HOME=SonarqubeScanner"]) {
+        // Bloque 'script' para ejecutar los pasos de SonarQube
+        script {
+            def scannerHome = tool 'SonarqubeScanner'
             withSonarQubeEnv('ServerSonarqube') {
-                sh "${scannerHome}/bin/sonar-scanner \
+                sh """
+                    \${SCANNER_HOME}/bin/sonar-scanner \
                     -Dsonar.projectKey=analisisTermometro \
                     -Dsonar.projectName=analisisTermometro \
                     -Dsonar.sources=src/main/java \
                     -Dsonar.java.binaries=target/classes \
-                    -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                    -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+                """
             }
         }
-
-        echo "Finalización de prueba en sonarQube"
-
     }
-}
 
+    // Tareas adicionales después de la ejecución de SonarQube
+    echo "Finalización de prueba en SonarQube"
+}
