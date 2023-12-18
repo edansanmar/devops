@@ -17,7 +17,7 @@ def pruebaTest() {
 }
 
 def empaquetadoPackage() {
-           /* sh 'mvn package'
+              sh 'mvn package'
                 }
                 post {
                     always {
@@ -25,17 +25,7 @@ def empaquetadoPackage() {
                     }
                     success {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
-                    }
-        echo "Finalización del empaquetado"*/
-       /* sh 'mvn package'
-    echo "Package completed"*/
-      // Configurar Maven
-                    def MAVEN_HOME = tool 'MAVEN_HOME'
-                    def mvnCmd = "${MAVEN_HOME}/bin/mvn"
-
-                    // Desplegar el artefacto (puede variar según tu caso)
-                    sh "${mvnCmd} deploy"
-
+                    }     
 }
 
 def sonarQube() {
