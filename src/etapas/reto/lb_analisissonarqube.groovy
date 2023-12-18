@@ -22,9 +22,9 @@ def call() {
             }
         }
 
-        archiveArtifacts artifacts: "target/${env.ARTIFACT_BACK}.jar", allowEmptyArchive: true, onlyIfSuccessful: false, displayName: "${env.ARTIFACT_BACK}.jar"
+        //archiveArtifacts artifacts: "target/${env.ARTIFACT_BACK}.jar", allowEmptyArchive: true, onlyIfSuccessful: false, displayName: "${env.ARTIFACT_BACK}.jar"
 
-        sh "mvn deploy:deploy-file -Durl=${env.MAVEN_SNAPSHOTS} -DrepositoryId=${env.REPOSITORY_ID_NEXUS} -Dfile=target/${env.ARTIFACT_BACK}.jar -DgroupId=${env.GROUP_ID_NEXUS} -DartifactId=${env.ARTIFACT_ID_BACK_JAVA} -Dversion=${env.ARTIFACT_VERSION_NEXUS_JAVA} -Dpackaging=jar -DrepositoryUsername='${env.NEXUS_USERNAME}' -DrepositoryPassword='${env.NEXUS_PASSWORD}'"
+        //sh "mvn deploy:deploy-file -Durl=${env.MAVEN_SNAPSHOTS} -DrepositoryId=${env.REPOSITORY_ID_NEXUS} -Dfile=target/${env.ARTIFACT_BACK}.jar -DgroupId=${env.GROUP_ID_NEXUS} -DartifactId=${env.ARTIFACT_ID_BACK_JAVA} -Dversion=${env.ARTIFACT_VERSION_NEXUS_JAVA} -Dpackaging=jar -DrepositoryUsername='${env.NEXUS_USERNAME}' -DrepositoryPassword='${env.NEXUS_PASSWORD}'"
 
     } catch (Exception e) {
         currentBuild.result = 'FAILURE'
