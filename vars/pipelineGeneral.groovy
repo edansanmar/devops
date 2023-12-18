@@ -22,14 +22,15 @@ def call(Map params) {
                     }
                 }
             }
-            stage('Test') {
+           stage('Test') {
                 steps {
                     script {
-                        def pruebaa = new etapas.reto.lb_analisissonarqubeo()
+                        def pruebaa = new etapas.reto.lb_analisissonarqube()
                         pruebaa.pruebaTest()
                     }
                 }
             }
+
             stage('Package') {
                 steps {
                     script {
