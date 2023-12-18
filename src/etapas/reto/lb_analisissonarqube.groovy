@@ -17,7 +17,7 @@ def pruebaTest() {
 }
 
 def empaquetadoPackage() {
-            sh 'mvn package'
+           /* sh 'mvn package'
                 }
                 post {
                     always {
@@ -26,7 +26,10 @@ def empaquetadoPackage() {
                     success {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }
-        echo "Finalización del empaquetado"
+        echo "Finalización del empaquetado"*/
+        sh 'mvn package'
+    echo "Package completed"
+
 }
 
 def sonarQube() {
