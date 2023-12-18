@@ -19,7 +19,7 @@ def call(Map params) {
                 steps {
                     script {
                         def cleann = new etapas.reto.lb_buildartefacto()
-                        cleann.call()
+                        cleann.construirBuild()
                     }
                 }
             }
