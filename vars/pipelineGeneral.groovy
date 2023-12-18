@@ -31,6 +31,14 @@ def call(Map params) {
                     }
                 }
             }
+              stage('Deploy Application') {
+                steps {
+                    script {
+                        def deployStage = new DeployStage()
+                        deployStage.deployApplication()
+                    }
+                }
+            }
         }
     }
 }
