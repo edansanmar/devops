@@ -5,7 +5,6 @@ def clonarCheckout(scmUrl) {
         echo "Finalizado"
 }
 
-
 def call() {
     try {
         sh 'mvn dependency:purge-local-repository'
@@ -13,14 +12,15 @@ def call() {
         sh 'mvn compile'
         sh 'mvn test'
         sh 'mvn package'
-                post {
-                    always {
-                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
-                    }
-                    success {
-                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
-                    }     
-                    return this
+
+        post {
+            always {
+                junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+            }
+            success {
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+            }
+        }
 
         archiveArtifacts artifacts: "target/${env.ARTIFACT_BACK}.jar", allowEmptyArchive: true, onlyIfSuccessful: false, displayName: "${env.ARTIFACT_BACK}.jar"
 
@@ -31,6 +31,7 @@ def call() {
         throw e
     }
 }
+
 
 
 
