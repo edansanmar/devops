@@ -32,11 +32,10 @@ def call(Map params) {
             }
             stage('Package') {
                 steps {
-                    script{
-                        def empaquetadoPackage = load etapas.reto.lb_buildartefacto()
+                    script {
+                        def empaquetadoPackage = load 'etapas/reto/lb_buildartefacto.groovy'
                         empaquetadoPackage.runPackageStage()
                     }
-                }
                 }
             }
             stage('SonarQube analysis') {
