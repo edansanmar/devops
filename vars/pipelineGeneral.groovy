@@ -37,11 +37,9 @@ def call(Map params) {
                         // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
                         def resultadoEmpaquetado = new etapas.reto.lb_analisissonarqube()
                         resultadoEmpaquetado.empaquetadoPackage()
-
                     }
                 }
             }
-
             stage('SonarQube') {
                 steps {
                     script {
@@ -51,18 +49,21 @@ def call(Map params) {
                 }
             }
         }
-
-        // Bloque post para manejar post-construcción
-        post {
-            always {
-                script {
-                    junit 'target/surefire-reports/TEST-*.xml'
-                }
+        
+        // Manejo de acciones de post-construcción
+        try {
+            // Bloque siempre ejecutado
+            script {
+                junit 'target/surefire-reports/TEST-*.xml'
             }
-            success {
-                script {
-                    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                }
+        } catch (Exception e) {
+            // Bloque ejecutado en caso de error
+            echo "Error occurred: ${e.message}"
+            currentBuild.result = 'FAILURE'
+        } finally {
+            // Bloque siempre ejecutado
+            script {
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
             }
         }
     }
