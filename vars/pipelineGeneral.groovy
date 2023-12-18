@@ -1,35 +1,30 @@
-def call(Map params) {
+//File: pipelineGeneral.groovvy
+def call (Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-
-    pipeline {
+    echo "Deploying backend wiht SCM URL: ${scmUrl}"
+pipeline {
         agent any
+
         stages {
             stage('Checkout') {
                 steps {
-                    script {
-                        def clonarr = new etapas.reto.lb_analisissonarqube()
-                        clonarr.clonarCheckout(scmUrl)
-                    }
+                    git url: scmUrl
                 }
             }
+
             stage('Build Application') {
                 steps {
-                    script {
-                        def cleann = new etapas.reto.lb_analisissonarqube()
-                        cleann.construirBuild()
-                    }
+                    sh 'mvn clean package'
                 }
             }
+
             stage('Test') {
                 steps {
-                    script {
-                        def pruebaa = new etapas.reto.lb_analisissonarqube()
-                        pruebaa.pruebaTest()
-                    }
+                    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                 }
             }
+
             stage('Package') {
                 steps {
                     sh 'mvn package'
@@ -43,6 +38,7 @@ def call(Map params) {
                     }
                 }
             }
+
             stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
@@ -60,4 +56,5 @@ def call(Map params) {
             }
         }
     }
+  
 }
