@@ -19,11 +19,11 @@ def call(Map params) {
                 steps {
                     script {
                         def cleann = new etapas.reto.lb_analisissonarqube()
-                        cleann.construirBuild()
+                        cleann.call()
                     }
                 }
             }
-            stage('Test') {
+           /* stage('Test') {
                 steps {
                     script {
                         def pruebaa = new etapas.reto.lb_analisissonarqube()
@@ -44,7 +44,7 @@ def call(Map params) {
                         echo "Ruta del archivo JAR: ${rutaArchivoJar}"
                     }
                 }
-            }
+            }*/
         }
     }
 }
