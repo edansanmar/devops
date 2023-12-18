@@ -1,60 +1,54 @@
-//File: pipelineGeneral.groovvy
-def call (Map params) {
+// File: pipelineGeneral.groovy
+def call(Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend wiht SCM URL: ${scmUrl}"
-pipeline {
-        agent any
+    echo "Deploying backend with SCM URL: ${scmUrl}"
 
+    pipeline {
+        agent any
         stages {
             stage('Checkout') {
                 steps {
-                    git url: scmUrl
+                    script {
+                        def clonarr = new etapas.reto.lb_buildartefacto()
+                        clonarr.clonarCheckout(scmUrl)
+                    }
                 }
             }
-
             stage('Build Application') {
                 steps {
-                    sh 'mvn clean package'
+                    script {
+                        def cleann = new etapas.reto.lb_buildartefacto()
+                        cleann.construirBuild()
+                    }
                 }
             }
-
             stage('Test') {
                 steps {
-                    sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
+                    script {
+                        def pruebaa = new etapas.reto.lb_buildartefacto()
+                        pruebaa.pruebaTest()
+                    }
                 }
             }
-
             stage('Package') {
                 steps {
-                    sh 'mvn package'
-                }
-                post {
-                    always {
-                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
-                    }
-                    success {
-                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    script {
+                        // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
+                        def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
+                        resultadoEmpaquetado.empaquetadoPackage()
+
                     }
                 }
             }
-
-            /*stage('SonarQube analysis') {
-                environment {
-                    scannerHome = tool 'SonarqubeScanner'
-                }
+            stage('SonarQube') {
                 steps {
-                    withSonarQubeEnv('ServerSonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=analisisTermometro \
-                            -Dsonar.projectName=analisisTermometro \
-                            -Dsonar.sources=src/main/java \
-                            -Dsonar.java.binaries=target/classes \
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
+                    script {
+                        def analisiscode = new etapas.reto.lb_buildartefacto()
+                        analisiscode.empaquetadoPackage()
                     }
                 }
-            }*/
+            }
         }
     }
-  
 }
