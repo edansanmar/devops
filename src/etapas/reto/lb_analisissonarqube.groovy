@@ -30,7 +30,7 @@ def pruebaTest() {
                     return this
 }*/
 def empaquetadoPackage() {
-    def rutaArchivoJar // Variable para almacenar la ruta del archivo JAR generado
+    enviroment { def rutaArchivoJar // Variable para almacenar la ruta del archivo JAR generado
 
     script {
         sh 'mvn package'
@@ -53,6 +53,7 @@ def empaquetadoPackage() {
     }
 
     return rutaArchivoJar
+    }
 }
 
 
