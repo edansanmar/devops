@@ -1,4 +1,6 @@
 //File: pipelineGeneral.groovvy
+import etpas.reto.deploy.DeployStage
+
 def call(Map params) {
     def scmUrl = params.scmUrl
 
