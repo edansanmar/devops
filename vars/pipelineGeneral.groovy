@@ -32,15 +32,15 @@ pipeline {
                     }
                 }
             }
-            stage('Package') {
-                node {
+            
+                node('Package') {
                     script{
                         def empaquetadoo= new etapas.reto.lb_analisissonarqube()
                         empaquetadoo.empaquetadoPackage()
                     }
                 }
-            }
-            stage('SonarQube analysis') {
+            
+            /*stage('SonarQube analysis') {
                 node {
                     script{
                         def analisiss= new etapas.reto.lb_analisissonarqube()
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
 
-                  }
+                  }*/
     }
   
 }
