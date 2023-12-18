@@ -35,7 +35,7 @@ def call(Map params) {
                 steps {
                     script {
                         // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
-                        def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
+                        def resultadoEmpaquetado = new etapas.reto.lb_analisissonarqube()
                         resultadoEmpaquetado.empaquetadoPackage()
 
                     }
