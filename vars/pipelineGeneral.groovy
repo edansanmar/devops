@@ -33,7 +33,7 @@ def call(Map params) {
             stage('Package') {
                 steps {
                     script {
-                        def empaquetadoPackage = load 'etapas/reto/lb_buildartefacto.groovy'
+                        def empaquetadoPackage = new etapas.reto.lb_buildartefacto.groovy
                         empaquetadoPackage.runPackageStage()
                     }
                 }
