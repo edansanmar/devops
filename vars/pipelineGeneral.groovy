@@ -35,7 +35,7 @@ def call(Map params) {
                 steps {
                     script {
                         def pempaquetado = new etapas.reto.lb_analisissonarqube()
-                        pempaquetado.empaquetadoPackage()()
+                        pempaquetado.empaquetadoPackage()
                     }
                 }
             }
