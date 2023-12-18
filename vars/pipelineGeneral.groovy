@@ -31,7 +31,7 @@ def call(Map params) {
                 }
             }
 
-            stage('Package') {
+            /*stage('Package') {
                 steps {
                     script {
                         def empacar = new etapas.reto.lb_buildartefact()
@@ -39,6 +39,6 @@ def call(Map params) {
                     }
                 }
             }
-        }
+        }*/
     }
 }
