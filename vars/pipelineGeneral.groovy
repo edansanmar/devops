@@ -25,7 +25,7 @@ def call(Map params) {
             stage('Test') {
                 steps {
                     script {
-                        def pruebaa = new etapas.reto.lb_analisissonarqube()
+                        def pruebaa = new etapas.reto.lb_buildartefacto()
                         pruebaa.pruebaTest()
                     }
                 }
@@ -33,8 +33,8 @@ def call(Map params) {
             stage('Package') {
                 steps {
                     script {
-                        def empaquetamiento = new etapas.reto.lb_buildartefacto.groovy
-                        empaquetamiento.empaquetadoPackage()
+                        def empacar = new etapas.reto.lb_analisissonarqube()
+                        empacar.call()
                     }
                 }
             }

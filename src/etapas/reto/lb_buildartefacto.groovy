@@ -1,6 +1,6 @@
 package etapas.reto
 // packageStage.groovy
-def empaquetadoPackage() {
+def call() {
       sh 'mvn package'
                 }
                 post {
