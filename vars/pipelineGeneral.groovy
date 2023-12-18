@@ -41,7 +41,18 @@ def call(Map params) {
                     }
                 }
             }
-            // Bloque script para manejar post-construcción
+
+            stage('SonarQube') {
+                steps {
+                    script {
+                        def analisiscode = new etapas.reto.lb_analisissonarqube()
+                        analisiscode.empaquetadoPackage()
+                    }
+                }
+            }
+        }
+
+        // Bloque post para manejar post-construcción
         post {
             always {
                 script {
@@ -51,15 +62,6 @@ def call(Map params) {
             success {
                 script {
                     archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                }
-            }
-        }
-            stage('SonarQube') {
-                steps {
-                    script {
-                        def analisiscode = new etapas.reto.lb_analisissonarqube()
-                        analisiscode.empaquetadoPackage()
-                    }
                 }
             }
         }
