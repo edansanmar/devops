@@ -45,7 +45,7 @@ def pruebaTest() {
         echo "Finalización de Build Applicarion"
 }
 
-/*def empaquetadoPackage() {
+def empaquetadoPackage() {
 
               sh 'mvn package'
                 }
@@ -57,8 +57,8 @@ def pruebaTest() {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }     
                     return this
-}*/
-def empaquetadoPackage() {
+}
+/*def empaquetadoPackage() {
     def rutaArchivoJar // Variable para almacenar la ruta del archivo JAR generado
 
     script {
@@ -82,7 +82,7 @@ def empaquetadoPackage() {
     }
 
     return rutaArchivoJar
-}
+}*/
 
 
 def sonarQube() {
