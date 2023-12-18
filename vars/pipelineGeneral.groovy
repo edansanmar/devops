@@ -1,9 +1,10 @@
-//File: pipelineGeneral.groovvy
-def call (Map params) {
+// File: pipelineGeneral.groovy
+def call(Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend wiht SCM URL: ${scmUrl}"
-pipeline {
+    echo "Deploying backend with SCM URL: ${scmUrl}"
+    
+    pipeline {
         agent any
 
         stages {
@@ -25,20 +26,7 @@ pipeline {
                 }
             }
 
-            /*stage('Package') {
-                steps {
-                    sh 'mvn package'
-                }
-                post {
-                    always {
-                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
-                    }
-                    success {
-                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
-                    }
-                }
-            }*/
-           stage('Run Package Stage') {
+            stage('Run Package Stage') {
                 steps {
                     script {
                         def packageStage = load 'packageStage.groovy'
@@ -64,5 +52,4 @@ pipeline {
             }
         }
     }
-  
 }
