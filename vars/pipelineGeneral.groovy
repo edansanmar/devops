@@ -1,6 +1,4 @@
-//File: pipelineGeneral.groovvy
-//import etpas.reto.deploy.DeployStage
-
+// File: pipelineGeneral.groovy
 def call(Map params) {
     def scmUrl = params.scmUrl
 
@@ -35,7 +33,7 @@ def call(Map params) {
             }
             stage('Package') {
                 steps {
-                    script { 
+                    script {
                         def empaquetamiento = new etapas.reto.lb_buildartefacto()
                         empaquetamiento.empaquetadoPackage()
                     }
