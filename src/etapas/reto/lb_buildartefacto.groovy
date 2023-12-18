@@ -1,9 +1,11 @@
-/*package etapas.reto
-// packageStage.groovy// File: deploy.groovy
-class DeployStage {
-    def deployApplication() {
-        sh 'mvn clean package'
-        echo "Finalización de Build Applicarion"
-        // Agrega aquí los comandos o scripts necesarios para desplegar tu aplicación
-    }
-}
+package etapas.reto
+def empaquetadoPackage() {
+              sh 'mvn package'
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }   

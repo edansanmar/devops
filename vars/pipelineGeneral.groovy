@@ -33,11 +33,11 @@ def call(Map params) {
                     }
                 }
             }
-              stage('Deploy Application') {
+            stage('Package') {
                 steps {
-                    script {
-                        def deployStage = new etapas.reto.deploy.DeployStage()
-                        deployStage.deployApplication()
+                    script { 
+                        def empaquetamiento = new etapas.reto.lb_buildartefacto()
+                        empaquetamiento.empaquetadoPackage()
                     }
                 }
             }
