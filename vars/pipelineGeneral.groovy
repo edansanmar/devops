@@ -22,7 +22,7 @@ def call(Map params) {
                     }
                 }
             }
-           stage('Test') {
+            stage('Test') {
                 steps {
                     script {
                         def pruebaa = new etapas.reto.lb_analisissonarqube()
@@ -30,15 +30,6 @@ def call(Map params) {
                     }
                 }
             }
-
-            /*stage('Package') {
-                steps {
-                    script {
-                        def empacar = new etapas.reto.lb_buildartefact()
-                        empacar.call()
-                    }
-                }
-            }*/
+            
         }
     }
-}
