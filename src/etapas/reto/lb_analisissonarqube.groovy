@@ -30,7 +30,7 @@ def empaquetadoPackage() {
        /* sh 'mvn package'
     echo "Package completed"*/
       // Configurar Maven
-                    def mavenHome = tool 'Maven'
+                    def mavenHome = tool 'MAVEN_HOME'
                     def mvnCmd = "${mavenHome}/bin/mvn"
 
                     // Desplegar el artefacto (puede variar según tu caso)
