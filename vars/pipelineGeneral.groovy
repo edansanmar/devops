@@ -10,7 +10,7 @@ def call(Map params) {
             stage('Checkout') {
                 steps {
                     script {
-                        def clonarr = new etapas.reto.lb_analisissonarqube()
+                        def clonarr = new etapas.reto.lb_buildartefacto()
                         clonarr.clonarCheckout(scmUrl)
                     }
                 }
@@ -18,7 +18,7 @@ def call(Map params) {
             stage('Build Application') {
                 steps {
                     script {
-                        def cleann = new etapas.reto.lb_analisissonarqube()
+                        def cleann = new etapas.reto.lb_buildartefacto()
                         cleann.call()
                     }
                 }
