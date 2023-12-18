@@ -25,7 +25,7 @@ pipeline {
                 }
             }
 
-            stage('Package') {
+            /*stage('Package') {
                 steps {
                     sh 'mvn package'
                 }
@@ -37,7 +37,13 @@ pipeline {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }
                 }
+            }*/
+                        // Llamada a la función definida en packageStage.groovy
+            script {
+                def packageStage = load 'packageStage.groovy'
+                packageStage.runPackageStage()
             }
+
 
             stage('SonarQube analysis') {
                 environment {
