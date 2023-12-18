@@ -58,32 +58,6 @@ def empaquetadoPackage() {
                     }     
                     return this
 }
-/*def empaquetadoPackage() {
-    def rutaArchivoJar // Variable para almacenar la ruta del archivo JAR generado
-
-    script {
-        sh 'mvn package'
-        // Obtener la ruta del archivo JAR generado
-        rutaArchivoJar = sh(script: 'find target -name "*.jar" | head -n 1', returnStdout: true).trim()
-    }
-
-    post {
-        always {
-            junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
-        }
-        success {
-            // Archivar el archivo JAR generado
-            archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-        }
-        script {
-            // Guardar la ruta del archivo JAR en un archivo de propiedades
-            writeFile file: 'ruta_archivo_jar.properties', text: "RUTA_ARCHIVO_JAR=${rutaArchivoJar}"
-        }
-    }
-
-    return rutaArchivoJar
-}*/
-
 
 def sonarQube() {
         def scannerHome = tool 'SonarqubeScanner'

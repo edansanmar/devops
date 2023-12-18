@@ -31,18 +31,6 @@ def call(Map params) {
                     }
                 }
             }
-             // Manejo de acciones de post-construcción dentro de un bloque node
-        node {
-            script {
-                try {
-                    junit 'target/surefire-reports/TEST-*.xml'
-                } catch (Exception e) {
-                    echo "Error occurred in tests: ${e.message}"
-                } finally {
-                    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-                }
-            }
-        }
             stage('Package') {
                 steps {
                     script {
