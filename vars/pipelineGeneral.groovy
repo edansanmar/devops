@@ -34,12 +34,17 @@ def call(Map params) {
             stage('Package') {
                 steps {
                     script {
-                        def pempaquetado = new etapas.reto.lb_analisissonarqube()
-                        pempaquetado.empaquetadoPackage()
+                        // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
+                        def resultadoEmpaquetado = new etapas.reto.lb_analisissonarqube().empaquetadoPackage(params)
+
+                        // Accedemos a la ruta del archivo JAR desde el mapa resultadoEmpaquetado
+                        def rutaArchivoJar = resultadoEmpaquetado.rutaArchivoJar
+
+                        // Ahora puedes usar 'rutaArchivoJar' según tus necesidades
+                        echo "Ruta del archivo JAR: ${rutaArchivoJar}"
                     }
                 }
             }
-            
         }
     }
 }
