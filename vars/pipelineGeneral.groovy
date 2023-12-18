@@ -25,13 +25,16 @@ def call(Map params) {
                     sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                 }
             }
-
-            // Llamada a la función definida en packageStage.groovy
+            node {
+                  // Llamada a la función definida en packageStage.groovy
             script {
                 def packageStage = load 'packageStage.groovy'
                 packageStage.runPackageStage()
             }
 
+            }
+
+          
             stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
