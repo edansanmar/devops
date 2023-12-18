@@ -7,4 +7,3 @@ class DeployStage {
         // Agrega aquí los comandos o scripts necesarios para desplegar tu aplicación
     }
 }
-*/
