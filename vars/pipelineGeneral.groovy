@@ -25,7 +25,7 @@ def call(Map params) {
             stage('Test') {
                 steps {
                     script {
-                        def pruebaa = new etapas.reto.lb_buildartefacto()
+                        def pruebaa = new etapas.reto.lb_analisissonarqubeo()
                         pruebaa.pruebaTest()
                     }
                 }
@@ -33,23 +33,8 @@ def call(Map params) {
             stage('Package') {
                 steps {
                     script {
-                        def empacar = new etapas.reto.lb_analisissonarqube()
+                        def empacar = new etapas.reto.lb_buildartefact()
                         empacar.call()
-                    }
-                }
-            }
-            stage('SonarQube analysis') {
-                environment {
-                    scannerHome = tool 'SonarqubeScanner'
-                }
-                steps {
-                    withSonarQubeEnv('ServerSonarqube') {
-                        sh "${scannerHome}/bin/sonar-scanner \
-                            -Dsonar.projectKey=analisisTermometro \
-                            -Dsonar.projectName=analisisTermometro \
-                            -Dsonar.sources=src/main/java \
-                            -Dsonar.java.binaries=target/classes \
-                            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
                     }
                 }
             }
