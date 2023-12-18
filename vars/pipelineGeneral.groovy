@@ -35,7 +35,7 @@ def call(Map params) {
                 steps {
                     script {
                         // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
-                        def resultadoEmpaquetado = new etapas.reto.lb_analisissonarqube()
+                        def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
                         resultadoEmpaquetado.empaquetadoPackage()
                     }
                 }
@@ -43,7 +43,7 @@ def call(Map params) {
             stage('SonarQube') {
                 steps {
                     script {
-                        def analisiscode = new etapas.reto.lb_analisissonarqube()
+                        def analisiscode = new etapas.reto.lb_buildartefacto()
                         analisiscode.empaquetadoPackage()
                     }
                 }
