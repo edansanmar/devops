@@ -27,8 +27,14 @@ def empaquetadoPackage() {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }
         echo "Finalización del empaquetado"*/
-        sh 'mvn package'
-    echo "Package completed"
+       /* sh 'mvn package'
+    echo "Package completed"*/
+      // Configurar Maven
+                    def mavenHome = tool 'Maven'
+                    def mvnCmd = "${mavenHome}/bin/mvn"
+
+                    // Desplegar el artefacto (puede variar según tu caso)
+                    sh "${mvnCmd} deploy"
 
 }
 
