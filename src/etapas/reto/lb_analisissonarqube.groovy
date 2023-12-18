@@ -26,6 +26,7 @@ def empaquetadoPackage() {
                     success {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }     
+                    return this
 }
 
 def sonarQube() {
