@@ -31,7 +31,7 @@ def call(Map params) {
                     }
                 }
             }
-            stage('Package') {
+            /*stage('Package') {
                 steps {
                     script {
                         // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
