@@ -12,7 +12,15 @@ def call() {
         sh 'mvn clean'
         sh 'mvn compile'
         sh 'mvn test'
-        sh 'mvn package'
+            sh 'mvn package'
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }     
 
         archiveArtifacts artifacts: "target/${env.ARTIFACT_BACK}.jar", allowEmptyArchive: true, onlyIfSuccessful: false, displayName: "${env.ARTIFACT_BACK}.jar"
 
