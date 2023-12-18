@@ -1,4 +1,4 @@
-/*package etapas.reto
+package etapas.reto
 // packageStage.groovy// File: deploy.groovy
 class DeployStage {
     def deployApplication() {
@@ -7,4 +7,3 @@ class DeployStage {
         // Agrega aquí los comandos o scripts necesarios para desplegar tu aplicación
     }
 }
-*/
