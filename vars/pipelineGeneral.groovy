@@ -1,10 +1,9 @@
-// File: pipelineGeneral.groovy
-def call(Map params) {
+//File: pipelineGeneral.groovvy
+def call (Map params) {
     def scmUrl = params.scmUrl
 
-    echo "Deploying backend with SCM URL: ${scmUrl}"
-    
-    pipeline {
+    echo "Deploying backend wiht SCM URL: ${scmUrl}"
+pipeline {
         agent any
 
         stages {
@@ -25,16 +24,29 @@ def call(Map params) {
                     sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report' // Ejecuta las pruebas y genera el informe de cobertura con JaCoCo
                 }
             }
-            node {
-                  // Llamada a la función definida en packageStage.groovy
-            script {
-                def packageStage = load 'packageStage.groovy'
-                packageStage.runPackageStage()
+
+            /*stage('Package') {
+                steps {
+                    sh 'mvn package'
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }
+                }
+            }*/
+           stage('Run Package Stage') {
+                steps {
+                    script {
+                        def packageStage = load 'packageStage.groovy'
+                        packageStage.runPackageStage()
+                    }
+                }
             }
 
-            }
-
-          
             stage('SonarQube analysis') {
                 environment {
                     scannerHome = tool 'SonarqubeScanner'
@@ -52,4 +64,5 @@ def call(Map params) {
             }
         }
     }
+  
 }
