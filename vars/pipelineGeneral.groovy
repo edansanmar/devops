@@ -47,9 +47,9 @@ pipeline {
                         analisiss.sonarQube()
                     }
                 }
-            }
+            }*/
 
-                  }*/
+                  }
     }
   
 }
