@@ -41,6 +41,19 @@ def call(Map params) {
                     }
                 }
             }
+            // Bloque script para manejar post-construcción
+        post {
+            always {
+                script {
+                    junit 'target/surefire-reports/TEST-*.xml'
+                }
+            }
+            success {
+                script {
+                    archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+                }
+            }
+        }
             stage('SonarQube') {
                 steps {
                     script {
