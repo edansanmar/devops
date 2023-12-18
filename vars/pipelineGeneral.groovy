@@ -51,19 +51,15 @@ def call(Map params) {
         }
         
         // Manejo de acciones de post-construcción
-        try {
-            // Bloque siempre ejecutado
-            script {
+        script {
+            // Ejecutar en caso de éxito
+            if (currentBuild.resultIsBetterOrEqualTo('SUCCESS')) {
                 junit 'target/surefire-reports/TEST-*.xml'
-            }
-        } catch (Exception e) {
-            // Bloque ejecutado en caso de error
-            echo "Error occurred: ${e.message}"
-            currentBuild.result = 'FAILURE'
-        } finally {
-            // Bloque siempre ejecutado
-            script {
                 archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
+            }
+            // Ejecutar en caso de error
+            else {
+                echo "Error occurred: ${currentBuild.result}"
             }
         }
     }
