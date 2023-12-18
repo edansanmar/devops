@@ -34,11 +34,12 @@ def call(Map params) {
             stage('Package') {
                 steps {
                     script {
-                        def empaquetamiento = new etapas.reto.lb_buildartefacto()
-                        empaquetamiento.empaquetadoPackage()
+                        def pempaquetado = new etapas.reto.lb_analisissonarqube()
+                        pempaquetado.empaquetadoPackage()()
                     }
                 }
             }
+            
         }
     }
 }

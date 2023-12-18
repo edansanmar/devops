@@ -16,7 +16,7 @@ def pruebaTest() {
         echo "Finalización de Build Applicarion"
 }
 
-/*def empaquetadoPackage() {
+def empaquetadoPackage() {
               sh 'mvn package'
                 }
                 post {
@@ -26,7 +26,7 @@ def pruebaTest() {
                     success {
                         archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
                     }     
-}*/
+}
 
 def sonarQube() {
         def scannerHome = tool 'SonarqubeScanner'
