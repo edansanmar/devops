@@ -36,7 +36,7 @@ def call(Map params) {
               stage('Deploy Application') {
                 steps {
                     script {
-                        def deployStage = new DeployStage()
+                        def deployStage = new etapas.reto.deploy.DeployStage()
                         deployStage.deployApplication()
                     }
                 }
