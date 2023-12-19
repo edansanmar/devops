@@ -1,4 +1,3 @@
-// File: pipelineGeneral.groovy
 def call(Map params) {
     def scmUrl = params.scmUrl
 
@@ -8,6 +7,9 @@ def call(Map params) {
         agent any
         stages {
             stage('Checkout') {
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
                 steps {
                     script {
                         def clonarr = new etapas.reto.lb_buildartefacto()
@@ -16,6 +18,9 @@ def call(Map params) {
                 }
             }
             stage('Build Application') {
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
                 steps {
                     script {
                         def cleann = new etapas.reto.lb_buildartefacto()
@@ -24,6 +29,9 @@ def call(Map params) {
                 }
             }
             stage('Test') {
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
                 steps {
                     script {
                         def pruebaa = new etapas.reto.lb_buildartefacto()
@@ -32,15 +40,20 @@ def call(Map params) {
                 }
             }
             stage('Package') {
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
                 steps {
                     script {
-                        // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
                         def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
                         resultadoEmpaquetado.empaquetadoPackage()
                     }
                 }
             }
             stage('SonarQube') {
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
                 steps {
                     script {
                         def analisiscode = new etapas.reto.lb_analisissonarqube()
@@ -49,7 +62,5 @@ def call(Map params) {
                 }
             }
         }
-
-       
     }
 }
