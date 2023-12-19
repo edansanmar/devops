@@ -59,7 +59,7 @@ def empaquetadoPackage() {
                     return this
 }
 
-def sonarQube() {
+/*def sonarQube() {
         def scannerHome = tool 'SonarqubeScanner'
 withSonarQubeEnv('ServerSonarqube') {
     sh "${scannerHome}/bin/sonar-scanner \
@@ -73,4 +73,4 @@ withSonarQubeEnv('ServerSonarqube') {
 
     echo "Finalización de prueba en sonarQube"
     //return jacocoReportPath
-}
+}*/
