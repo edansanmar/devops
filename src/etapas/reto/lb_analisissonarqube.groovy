@@ -14,3 +14,5 @@ withSonarQubeEnv('ServerSonarqube') {
     echo "Finalización de prueba en sonarQube"
     //return jacocoReportPath
 }
+
+
