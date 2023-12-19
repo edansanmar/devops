@@ -4,6 +4,7 @@ def call(Map params) {
     def scmUrl = params.scmUrl
 
     echo "Deploying backend with SCM URL: ${scmUrl}"
+    echo "Uso de la rama feature"
 
     pipeline {
         agent any
