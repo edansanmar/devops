@@ -1,5 +1,4 @@
 package etapas.reto
-//Intanto de funcionamiento del proceso 
 def sonarQube() {
         def scannerHome = tool 'SonarqubeScanner'
 withSonarQubeEnv('ServerSonarqube') {
