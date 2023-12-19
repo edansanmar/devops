@@ -1,6 +1,4 @@
-//Adición de la rama feature
 // File: pipelineGeneral.groovy
->>>>>>> af1d8a61c7b391264c48c4e1e0cdb9418504a721
 def call(Map params) {
     def scmUrl = params.scmUrl
 
