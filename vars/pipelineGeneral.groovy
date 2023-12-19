@@ -1,3 +1,4 @@
+// File: pipelineGeneral.groovy
 def call(Map params) {
     def scmUrl = params.scmUrl
 
