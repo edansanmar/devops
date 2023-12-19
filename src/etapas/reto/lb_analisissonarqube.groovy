@@ -5,8 +5,8 @@ withSonarQubeEnv('ServerSonarqube') {
     sh "${scannerHome}/bin/sonar-scanner \
         -Dsonar.projectKey=analisisTermometro \
         -Dsonar.projectName=analisisTermometro \
-        -Dsonar.sources=src/main/java \
-        -Dsonar.java.binaries=target/classes \
+        -Dsonar.sources=. \
+        -Dsonar.java.binaries=. \
         -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
 }
 
