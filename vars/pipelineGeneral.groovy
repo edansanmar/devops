@@ -43,7 +43,7 @@ def call(Map params) {
             stage('SonarQube') {
                 steps {
                     script {
-                        def analisiscode = new etapas.reto.lb_buildartefacto()
+                        def analisiscode = new etapas.reto.lb_analisissonarqube()
                         analisiscode.empaquetadoPackage()
                     }
                 }
