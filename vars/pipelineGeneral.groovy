@@ -26,9 +26,6 @@ def call(Map params) {
                 }
             }
             stage('Test') {
-                when {
-                    expression { return env.BRANCH_NAME == 'feature' }
-                }
                 steps {
                     script {
                         def pruebaa = new etapas.reto.lb_buildartefacto()
