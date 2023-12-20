@@ -1,4 +1,3 @@
-//Adición de la rama feature
 // File: pipelineGeneral.groovy
 // File: pipelineGeneral.groovy
 def call(Map params) {
