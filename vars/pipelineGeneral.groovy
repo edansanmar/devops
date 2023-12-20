@@ -42,28 +42,25 @@ def call(Map params) {
                 }
             }
             stage('Package') {
-    when {
-        expression { return env.BRANCH_NAME == 'feature' }
-    }
-    steps {
-        script {
-            def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
-            resultadoEmpaquetado.empaquetadoPackage()
-        }
-    }
-    post {
-        always {
-            script {
-                junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                when {
+                    expression { return env.BRANCH_NAME == 'feature' }
+                }
+                steps {
+                    script {
+                        def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
+                        resultadoEmpaquetado.empaquetadoPackage()
+                    }
+                }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }
+                }
             }
-        }
-        success {
-            script {
-                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
-            }
-        }     
-    }
-}
+    
 
             stage('SonarQube') {
                 when {

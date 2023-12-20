@@ -41,7 +41,8 @@ def construirBuild() {
 }
 
 def pruebaTest() {
-         sh 'mvn clean package'
+        sh 'mvn clean package'
+        sh 'mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test jacoco:report'
         echo "Finalización de Build Applicarion"
 }
 
