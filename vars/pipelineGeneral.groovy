@@ -1,5 +1,6 @@
 //Adición de la rama feature
 // File: pipelineGeneral.groovy
+// File: pipelineGeneral.groovy
 def call(Map params) {
     def scmUrl = params.scmUrl
 
@@ -18,6 +19,7 @@ def call(Map params) {
                 }
             }
             stage('Build Application') {
+                
                 steps {
                     script {
                         def cleann = new etapas.reto.lb_buildartefacto()
@@ -34,15 +36,26 @@ def call(Map params) {
                 }
             }
             stage('Package') {
+    
                 steps {
                     script {
-                        // Llamamos a la función empaquetadoPackage y recibimos el resultado en el mapa resultadoEmpaquetado
                         def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
                         resultadoEmpaquetado.empaquetadoPackage()
                     }
                 }
+                post {
+                    always {
+                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                    }
+                    success {
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                    }
+                }
             }
+    
+
             stage('SonarQube') {
+                
                 steps {
                     script {
                         def analisiscode = new etapas.reto.lb_analisissonarqube()
@@ -51,7 +64,5 @@ def call(Map params) {
                 }
             }
         }
-
-       
     }
 }
