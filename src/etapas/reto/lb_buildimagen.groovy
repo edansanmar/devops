@@ -1,4 +1,4 @@
-Package etapas.reto
+package etapas.reto
 //Se procedera a crear una función, para la implementación de una imagen del proyecto
 def createImage(){
    //Se establece una variable, la cual se utiliza para 
