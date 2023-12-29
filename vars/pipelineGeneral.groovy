@@ -53,7 +53,7 @@ def call(Map params) {
             }
     
 
-           /* stage('SonarQube') {
+            stage('SonarQube') {
                 
                 steps {
                     script {
@@ -61,7 +61,7 @@ def call(Map params) {
                         analisiscode.sonarQube()
                     }
                 }
-            }*/
+            }
             stage('BuilImage') {
                 steps {
                     script {
