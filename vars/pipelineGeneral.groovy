@@ -62,6 +62,15 @@ def call(Map params) {
                     }
                 }
             }
+            stage('BuilImage') {
+                steps {
+                    script {
+                        def buildImages = new etapas.reto.lb_buildimagen()
+                        buildImages.createImage()
+                    }
+                }
+            }
         }
     }
 }
+
