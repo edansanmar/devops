@@ -10,7 +10,7 @@ withSonarQubeEnv('ServerSonarqube') {
         -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml"
 }
 
-// prueba para el funcionamiento normal
+
     echo "Finalización de prueba en sonarQube"
     //return jacocoReportPath
 }
