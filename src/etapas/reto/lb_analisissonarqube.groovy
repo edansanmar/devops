@@ -3,7 +3,7 @@ def sonarQube() {
         def scannerHome = tool 'SonarqubeScanner'
 withSonarQubeEnv('ServerSonarqube') {
     sh "${scannerHome}/bin/sonar-scanner \
-        -Dsonar.projectKey=$keyProyect \
+        -Dsonar.projectKey=${keyProyect} \
         -Dsonar.projectName=${nameProject} \
         -Dsonar.sources=src/main/java \
         -Dsonar.java.binaries=target/classes \
