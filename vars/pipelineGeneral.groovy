@@ -1,10 +1,10 @@
 // File: pipelineGeneral.groovy
-// File: pipelineGeneral.groovy
+
 def call(Map params) {
     def scmUrl = params.scmUrl
 
     echo "Deploying backend with SCM URL: ${scmUrl}"
-    echo "Uso de la rama feature"
+    echo "Using the feature branch"
 
     pipeline {
         agent any
@@ -12,68 +12,64 @@ def call(Map params) {
             stage('Checkout') {
                 steps {
                     script {
-                        def clonarr = new etapas.reto.lb_buildartefacto()
-                        clonarr.clonarCheckout(scmUrl)
+                        def buildArtefacto = new etapas.reto.lb_buildartefacto()
+                        buildArtefacto.clonarCheckout(scmUrl)
                     }
                 }
             }
             stage('Build Application') {
-                
                 steps {
                     script {
-                        def cleann = new etapas.reto.lb_buildartefacto()
-                        cleann.construirBuild()
+                        def buildArtefacto = new etapas.reto.lb_buildartefacto()
+                        buildArtefacto.construirBuild()
                     }
                 }
             }
             stage('Test') {
                 steps {
                     script {
-                        def pruebaa = new etapas.reto.lb_buildartefacto()
-                        pruebaa.pruebaTest()
+                        def buildArtefacto = new etapas.reto.lb_buildartefacto()
+                        buildArtefacto.pruebaTest()
                     }
                 }
             }
             stage('Package') {
-    
                 steps {
                     script {
-                        def resultadoEmpaquetado = new etapas.reto.lb_buildartefacto()
-                        resultadoEmpaquetado.empaquetadoPackage()
+                        def buildArtefacto = new etapas.reto.lb_buildartefacto()
+                        buildArtefacto.empaquetadoPackage()
                     }
                 }
                 post {
                     always {
-                        junit 'target/surefire-reports/TEST-*.xml' // Patrón para los archivos XML de pruebas
+                        junit 'target/surefire-reports/TEST-*.xml'
                     }
                     success {
-                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false // Archivar el archivo JAR generado
+                        archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
                     }
                 }
             }
-    
-
             stage('SonarQube') {
-                
                 steps {
                     script {
-                        def analisiscode = new etapas.reto.lb_analisissonarqube()
-                        analisiscode.sonarQube()
+                        def analisisSonarQube = new etapas.reto.lb_analisissonarqube()
+                        analisisSonarQube.sonarQube()
                     }
                 }
             }
-            stage('BuilImage') {
+            stage('BuildImage') {
                 steps {
                     script {
-                        def buildImages = new etapas.reto.lb_buildimagen()
-                        buildImages.createImage()
+                        def buildImagen = new etapas.reto.lb_buildimagen()
+                        buildImagen.createImage()
                     }
                 }
             }
             stage('PublishImage') {
                 steps {
                     script {
-                        def imagePublish = new etapas.reto.lb_publicardockerhub.groovy
+                        def publicarImagen = new etapas.reto.lb_publicardockerhub()
+                        publicarImagen.publicarimagen()
                     }
                 }
             }
