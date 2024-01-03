@@ -8,6 +8,8 @@ def createImage(){
  }else {
     sh 'docker build -t termometro-buildimagen -f ../termometro/Dockerfile ../termometro'
  }
+ sh 'docker build -t edansama96/termometro-buildimagen -f ../termometro/Dockerfile ../termometro'
+
 }
 
 //Se intenta que se pueda realizar el pull request
