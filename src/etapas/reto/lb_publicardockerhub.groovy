@@ -20,9 +20,11 @@ def publicarimagen() {
         }
 
         // Etiquetar la imagen local con el nombre de Docker Hub y luego empujarla a Docker Hub
-        sh "docker tag termometro-buildimagen ${dockerHubUsername}/termometro-buildimagen"
-        sh "docker push ${dockerHubUsername}/termometro-buildimagen:latest"
+       // sh "docker tag termometro-buildimagen ${dockerHubUsername}/termometro-buildimagen"
+        //sh "docker push ${dockerHubUsername}/termometro-buildimagen:latest"
+        sh "docker.image(${dockerHubUsername}/termometro-buildimagen:latest).push()"
     }
+     sh "docker.image(${dockerHubUsername}/termometro-buildimagen:latest).push()"
 }
 
 
