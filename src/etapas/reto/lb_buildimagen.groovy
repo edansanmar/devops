@@ -6,7 +6,7 @@ def createImage(){
  if(imageExists){
     echo "La imagen termometro-buildimagen ya existe. Descartando construcción..."
  }else {
-    sh 'docker build -t ${env.DOCKERHUB_USERNAME}/termometro-buildimagen -f ../termometro/Dockerfile ../termometro'
+    sh 'docker build -t edansama96/termometro-buildimagen -f ../termometro/Dockerfile ../termometro'
  }
 }
 
