@@ -70,6 +70,13 @@ def call(Map params) {
                     }
                 }
             }
+            stage('PublishImage') {
+                steps {
+                    script {
+                        def imagePublish = new etapas.reto.lb_publicardockerhub.groovy
+                    }
+                }
+            }
         }
     }
 }
