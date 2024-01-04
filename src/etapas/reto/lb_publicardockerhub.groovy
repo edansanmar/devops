@@ -6,6 +6,7 @@ def publicarimagen() {
     def dockerHubTokenCredentialId = 'tokendockerhub'
 
     // Verificar si la imagen ya existe localmente
+
     def imageExists = sh(script: "docker images -q ${env.DOCKERHUB_USERNAME}/termometro-buildimagen", returnStdout: true).trim()
 
     if (imageExists) {
@@ -28,6 +29,7 @@ def publicarimagen() {
     
      // Autenticación en Docker Hub utilizando las credenciales almacenadas en Jenkins
                    /* withCredentials([usernamePassword(credentialsId: 'dockerHubTokenCredentialId',
+                    withCredentials([usernamePassword(credentialsId: 'tokendockerhub',
                                                      passwordVariable: 'DOCKERHUB_PASSWORD',
                                                      usernameVariable: 'DOCKERHUB_USERNAME')]) {
                         sh "docker login --username ${env.DOCKERHUB_USERNAME} --password ${env.DOCKERHUB_PASSWORD}"
@@ -36,6 +38,7 @@ def publicarimagen() {
                         //sh 'docker tag miusuario/mi-imagen:latest miusuario/mi-imagen:latest'
                         //sh 'docker push miusuario/mi-imagen:latest'
                         sh 'docker push ${env.DOCKERHUB_USERNAME}/termometro-buildimagen'
+                        sh 'docker push ${DOCKERHUB_USERNAME}/termometro-buildimagen'
 
                                                      }*/
 
