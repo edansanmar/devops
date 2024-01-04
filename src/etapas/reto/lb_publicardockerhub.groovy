@@ -27,7 +27,7 @@ def publicarimagen() {
     //sh "docker push ${dockerHubUsername}/termometro-buildimagen"
     
      // Autenticación en Docker Hub utilizando las credenciales almacenadas en Jenkins
-                    withCredentials([usernamePassword(credentialsId: 'dockerHubTokenCredentialId',
+                    withCredentials([usernamePassword(credentialsId: 'tokendockerhub',
                                                      passwordVariable: 'DOCKERHUB_PASSWORD',
                                                      usernameVariable: 'DOCKERHUB_USERNAME')]) {
                         sh "docker login --username ${env.DOCKERHUB_USERNAME} --password ${env.DOCKERHUB_PASSWORD}"
