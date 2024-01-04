@@ -57,7 +57,7 @@ def call(Map params) {
                     }
                 }
             }
-            stage('BuildImage') {
+            stage('Build Image') {
                 steps {
                     script {
                         def buildImagen = new etapas.reto.lb_buildimagen()
@@ -65,7 +65,7 @@ def call(Map params) {
                     }
                 }
             }
-            stage('PublishImage') {
+            stage('Publish Image') {
                 steps {
                     script {
                         def publicarImagen = new etapas.reto.lb_publicardockerhub()
