@@ -37,7 +37,7 @@ def publicarimagen() {
                         //sh 'docker push miusuario/mi-imagen:latest'
                         sh 'docker push ${dockerHubUsername}/termometro-buildimagen'
 
-
+                                                     }
 
 }
 
