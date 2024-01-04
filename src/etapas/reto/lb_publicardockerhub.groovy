@@ -6,7 +6,7 @@ def publicarimagen() {
     def dockerHubTokenCredentialId = 'tokendockerhub'
 
     // Verificar si la imagen ya existe localmente
-    def imageExists = sh(script: "docker images -q ${dockerHubUsername}/termometro-buildimagen", returnStdout: true).trim()
+   // def imageExists = sh(script: "docker images -q ${dockerHubUsername}/termometro-buildimagen", returnStdout: true).trim()
 
    /* if (imageExists) {
         // Si la imagen ya existe, imprimir un mensaje y descartar la publicación
