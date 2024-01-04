@@ -35,7 +35,7 @@ def publicarimagen() {
                         // Etiquetar y empujar la imagen a Docker Hub
                         //sh 'docker tag miusuario/mi-imagen:latest miusuario/mi-imagen:latest'
                         //sh 'docker push miusuario/mi-imagen:latest'
-                        sh 'docker push ${env.DOCKERHUB_USERNAME}/termometro-buildimagen'
+                        sh 'docker push ${DOCKERHUB_USERNAME}/termometro-buildimagen'
 
                                                      }
 
