@@ -65,14 +65,14 @@ def call(Map params) {
                     }
                 }
             }
-            /*stage('Publish Image') {
+            stage('Publish Image') {
                 steps {
                     script {
                         def publicarImagen = new etapas.reto.lb_publicardockerhub()
                         publicarImagen.publicarimagen()
                     }
                 }
-            }*/
+            }
         }
     }
 }
