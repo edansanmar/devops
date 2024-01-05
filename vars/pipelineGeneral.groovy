@@ -73,6 +73,15 @@ def call(Map params) {
                     }
                 }
             }
+            stage('Deploy Docker') {
+                steps {
+                    script {
+                        def despleguarDocker = new etapas.reto.lb_publicardockerhub()
+                            despleguarDocker.implementarDocker () 
+                        
+                    }
+                }
+            }
         }
     }
 }
