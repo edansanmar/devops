@@ -10,7 +10,7 @@ def implementarDocker (){
     } else {
         sh "docker stop ${containerName} || true"
         sh "docker rm ${containerName} || true"
-        sh "docker pull ${dockerimage}"
+       // sh "docker pull ${dockerimage}"
         sh "docker run -d -p 3000:8080 --name ${containerName} ${dockerimage}"
     }
 
