@@ -27,6 +27,7 @@ def publicarimagen() {
        
     }
     
+
 }
 
 
