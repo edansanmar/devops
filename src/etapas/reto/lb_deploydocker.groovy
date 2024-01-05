@@ -21,7 +21,8 @@ def implementarDocker (){
     sh "docker stop ${containerName} || true"
     sh "docker rem ${containerName} || true"
 
-   sh "docker run -d  --name ${containerName} -p 3000:8080 ${dockerImage}"
+   sh "docker run -d  --name ${containerName} -p 3000:8080 edansam96/termometro-buildimagen:latest"
 
 
 }
+
