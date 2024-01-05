@@ -2,7 +2,7 @@ def implementarDocker (){
     def dockerHubUsername = 'edansama96'
     def imageName = 'termometro-buildimagen'
     def containerName = 'termometro-buildimagen'
-    def dockerimage = '${dockerHubUsername}/${imageName}:latest'
+    def dockerimage = "${dockerHubUsername}/${imageName}:latest"
     def containerExists = sh(script: "docker ps -a --filter name=${containerName}",
     returnStdout: true).trim()
     if (containerExists) {
