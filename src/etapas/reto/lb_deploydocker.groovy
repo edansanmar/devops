@@ -11,7 +11,7 @@ def implementarDocker (){
         sh "docker stop ${containerName} || true"
         sh "docker rm ${containerName} || true"
        // sh "docker pull ${dockerimage}"
-        sh "docker run -d -p 3000:8080 --name ${containerName} ${dockerHubUsername}/${imageName}"
+        sh "docker run -d -p 3000:8080 --name ${containerName} ${env.DOCKERHUB_USERNAME}/${imageName}"
     }
 
 }
