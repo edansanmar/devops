@@ -11,8 +11,7 @@ def publicarimagen() {
 
     if (imageExists) {
         // Si la imagen ya existe, imprimir un mensaje y descartar la publicación
-        echo "La imagen ${env.DOCKERHUB_USERNAME}/termometro-buildimagen ya existe en
-         Docker Hub. Descartando publicación..."
+        echo "La imagen ${env.DOCKERHUB_USERNAME}/termometro-buildimagen ya existe en Docker Hub. Descartando publicación..."
     } else {
         // Autenticación en Docker Hub usando credenciales de Jenkins
         withCredentials([usernamePassword(credentialsId: dockerHubTokenCredentialId,
